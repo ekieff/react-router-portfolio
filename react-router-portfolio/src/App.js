@@ -14,6 +14,10 @@ import About from './About';
 
 
 function App() {
+  const posts =[
+    {title:'Hello', body:'Hi, how are you?'},
+    {title:'Goodbye', body:'Come back now.'}
+  ]
   return (
     <Router>
       <div className="App">
@@ -23,10 +27,10 @@ function App() {
           <Link to='/blog'>My Blog</Link>{' '}
           <Link to='/about'>About Me</Link>{' '}
         </nav>
-        <Route exact path='/' component={Homepage}/>
-        <Route path='/projects' component={Projects}/>
-        <Route path='/blog' component={Blog}/>
-        <Route path='/about' component={About}/>
+          <Route exact path='/' component={Homepage}/>
+          <Route path='/projects' component={Projects}/>
+          <Route path='/blog' render={() => <Blog posts={posts} />}/>
+          <Route path='/about' component={About}/>
       </div>
     </Router>
   );
